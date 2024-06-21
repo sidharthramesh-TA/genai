@@ -61,8 +61,16 @@ The size of BERT vocabulary is 30K tokens. Input text is converted to Tokens by 
 
 ## Attention
 
-Self Attention is how BERT generates Contextual Embeddings. Each token is represented by a token embedding - which is a vector of fixed length. BERT takes in input embeddings xt for each input token vt
+Self-attention, also known as intra-attention, is a mechanism within neural networks that allows the model to weigh the importance of different words in a sequence relative to each other. Self Attention is how BERT generates Contextual Embeddings . Each token is represented by a token embedding - which is a vector of fixed length. BERT takes in input embeddings xt for each input token vt
 of input sequence v1,v2,...vt . Embeddings are transformed by linear mappings to query vectors Q, key vectors K, value Vectors V
+
+![alt text](image-28.png)
+
+Here, \( X \) is the input embedding, and \( W_Q \), \( W_K \), \( W_V \) are learnable weight matrices.
+
+Multi-headed attention is an extension of the self-attention mechanism that allows the model to focus on different parts of the sequence from multiple perspectives or "heads" simultaneously. Each head operates independently, learning different aspects of the relationships between words.
+
+![alt text](image-29.png)
 
 association score between the tokens are computed by taking a scalar product between query vector and key vector
 
@@ -110,6 +118,7 @@ Difference between BERT versions like base and large are the number of layers of
 In the BERTology paper [4] authors look at the various ways in which attention affects the output result. Following is a illustration of the types of matrices that are constructed by the Model with Attention values. 
 
 ![attention patterns in BERT](image-9.png)
+
 attention patterns in BERT [4]
 
 A interactive way of dealing with attention can be done by the following notebook. The example in the notebook can be repalced with a custom example. The notebook demonstrates the many layers and heads that are used for a simple BERT version.
@@ -129,7 +138,7 @@ BERT is pre-trained on two unsupervised tasks
 
 For MLM tasks a given input sentence is masked with 15% of the words and trained with the network to predict masked words. To predict the Masked word, BERT reads the sentence in both directions and predicts the masked word. Lets look at an example
 
-BERT takes Input data as embeddings using the layers indicated below
+BERT takes Input data as embeddings, Embeddings are numerical vector arrays that words or tokens have been converted to, using the layers indicated below
 
 1. Token Embedding
 2. Segment Embedding
@@ -210,6 +219,9 @@ To visualize the above example we have the following image that has the input te
 ## Finetuning BERT
 
 pre-training a BERT model allows it to learn syntactic and semantic properties of the language. This can be used used for training tasks for subsequent fine tuning. 
+
+
+![alt text](image-27.png)
 
 Fine tuning allows the model to regress on smaller amount of data for a specific task which leads to better model in less data , less time. The entire model, including the pre-trained layers and the new task-specific layers, is trained on the labeled dataset. The weights are adjusted to optimize performance on the new task while retaining the language understanding learned during pre-training. Fine tuning also generally requires change in architecture like adding a new layer of logistic classifiers. The output of this exercise is that the skill learned can be transfered to similar problem types. This is called Transfer Learning. This ability is the main reason behind the fame for BERT type models. 
 
