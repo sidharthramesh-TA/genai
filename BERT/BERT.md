@@ -26,6 +26,10 @@ an oversimplified way to think of it would be
 Transformers - Decoders = BERT
 `
 
+### BERT Architecture
+
+![alt text](image-25.png)
+
 ### Whats so Bidirectional about BERT ? 
 
 Its able to read a given sentence left-to-right or right-to-left and is able to use the context learning that its got from digesting the input that its able to predict any word within that input sentence using the context.
@@ -36,7 +40,7 @@ Thats cause BERT requires only the encoder componenet of the Transformer duo. Ou
 
 ## Tokens
 
-Input text is converted to Tokens by a specific kind of tokenizer like _Wordpiece_. What it does is that Common text like 'dog' are assigned a token of their own but rare words like playing are divided into 'play' and '##ing' where the ## gives the signal that its part of a word [17]. BERT also uses special tokens like 
+The size of BERT vocabulary is 30K tokens. Input text is converted to Tokens by a specific kind of tokenizer like _Wordpiece_. What it does is that Common text like `dog` are assigned a token if they exist in the model vocabulary but if they are not present like `playing` then they are divided into `play` and `##ing` where the `##` gives the signal that its part of a word [17]. BERT also uses special tokens like 
 
 `
 [CLS] 
@@ -88,10 +92,13 @@ Example 1
 
 Example 2
 
-BERT is able to discern dynamic embeddings based on context as opposed to context free models like word2Vec which generate static embeddings. This is due to the magic done by multi head attention mechanism. 
+BERT is able to discern dynamic embeddings based on context as opposed to context free models like word2Vec which generate static embeddings without taking context into account. This is due to the impact of multi head attention mechanism [18]. What multi head attention here means is that each word in the sentence is related to all the words and thereby a relationship is derived.  
 
 ![Sentence A- BERT](image-17.png)
-BERT generating the representation of each word in the sentence 
+
+BERT generating the representation of each word in the sentence. 
+
+Here `RHe` implies representation of the word `He` also called _embedding_  
 
 Difference between BERT versions like base and large are the number of layers of encoders. Base contains 12 layers whereas large contains 24. 
 
@@ -106,7 +113,16 @@ A interactive way of dealing with attention can be done by the following noteboo
 
 [Visualizing BERT](https://colab.research.google.com/github/davidarps/2022_course_embeddings_and_transformers/blob/main/Visualizing_Attention_with_BertViz.ipynb#scrollTo=IAqLLQofc7IZ) 
 
-## Embeddings
+## Pre-Training
+
+BERT is pre-trained on two broad tasks
+
+1. Masked Language Modelling (MLM)
+2. Next Sentence Prediction (NSP)
+
+### MLM
+
+For MLM tasks a given input sentence is masked with 15% of the words and trained with the network to predict masked words. To predict the Masked word, BERT reads the sentence in both directions and predicts the masked word. Lets look at an example
 
 BERT takes Input data as embeddings using the layers indicated below
 
@@ -166,6 +182,25 @@ We observe that City is returned as the word with highest probability, which is 
 
 Two famouse BERT models are BERT base and BERT large , both can be found in hugging face 
 
+### Next Sentence Prediction
+
+NSP is another strategy used for training. It is a binary classification task. The input given are two sentences and BERT has to predict the relationship between the two sentences. Following example helps us understand better
+
+Sentence A: She cooked pasta.
+
+Sentence B: It was delicious.
+
+In the above example Sentence B is a follow up of A. Now consider 
+
+Sentence A: Turn the radio on.
+
+Sentence B: She bought a new hat. 
+
+There is no relation between Sentence B and A
+
+To visualize the above example we have the following image that has the input text sentences going through the 12 layer BERT base and is then passed over to the Feed Forward network and Softmax to predict the likely nature of Sentence B
+
+![alt text](image-26.png)
 
 ## Finetuning BERT
 
@@ -181,6 +216,15 @@ pre-training a BERT model allows it to learn syntactic and semantic properties o
 
 
 ![examples of FT](image-8.png)
+
+
+Here we notice that for text classification the example given is `The sandwich was good and tasty` and BERT classifies the sentiment as `Positive`.
+
+Text pair classification (NSP) example given is `It rains` and `the sun shines` and BERT is able to classify it rightly as `contradiction`
+
+For NER example we have `Joe Biden went to New York` and BERT is able to identify the parts of sentence as Person, Object and Location
+
+For Span prediction the input question is `who discovered America` and the answer is identified as `Columbus` 
 
 
 # GPT Models
