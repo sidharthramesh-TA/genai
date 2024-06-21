@@ -1,26 +1,58 @@
+
+# Gen AI training
+
+In this section we will be exploring BERT and GPT Model architectures. Before we dive into BERT lets look at the broader classification of models that are used in Natural Language Processing
+
+1. Autoencoders 
+2. Autoregressive language models
+3. Transformers encoder - decoders
+
+These models are usually pre-trained on a large general training set and often fine-tuned for a specific task, hence are called Pre-trained language Models (PLM). When the number of parameters of these models get large and can be instructed by prompts then they are called Foundation Models [17]. 
+
+
 # BERT
 
-Bidirectional Encoder and Representations for Transformers (BERT) are autoencoders (AE) models which recive an input text and produce contextual embedding for each token [17]. Getting used widly these days owing to the success that it has deonstrated in language tasks.
+Bidirectional Encoder Representation from Transformer (BERT) are autoencoders (AE) models that has revolutionised NLP with thier State-of-the-art embedding model published by Google. It has successfully completed many NLP tasks such as 
 
-a simple way to think of it would be 
+1. Question Answering
+2. Text Generation
+3. Sentence Classification
+
+Its success is largely due to its ability to do context-based embeddings, unlike context free embeddings like word2Vec
+
+an oversimplified way to think of it would be 
 
 `
 Transformers - Decoders = BERT
 `
 
-Whats so Bidirectional about BERT ? It uses prior and after words to predict the current word. This feature is exploited in Masked Language Modelling where during training a BERT model about 15% of the text is masked and BERT has to take into account the context of the sentence and then predict the word that gets the most attention.
+### Whats so Bidirectional about BERT ? 
 
-## Workings
+Its able to read a given sentence left-to-right or right-to-left and is able to use the context learning that its got from digesting the input that its able to predict any word within that input sentence using the context.
 
-input text is converted to Tokens by a specific kind of tokenizer like Wordpiece. Common text when ingested like 'dog' are assigned a token of their own but rare words like playing are divided into 'play' and '##ing' where the ## gives the signal that its part of a word. BERT also uses special tokens like 
+### Why is it called Autoencorder ? 
 
-```
-[CLS]
+Thats cause BERT requires only the encoder componenet of the Transformer duo. Output of a encoder layer is given as an input to another encoder layer and is propagated through the defined layers of BERT model.
 
+## Tokens
+
+Input text is converted to Tokens by a specific kind of tokenizer like _Wordpiece_. What it does is that Common text like 'dog' are assigned a token of their own but rare words like playing are divided into 'play' and '##ing' where the ## gives the signal that its part of a word [17]. BERT also uses special tokens like 
+
+`
+[CLS] 
+` - This is to signal the start of the Input sentence
+
+`
 [SEP]
+` - This is to signal the end of Sentence
 
+`
 [MASK]
-```
+` - This is to signal the Masked word that BERT would need to predict
+
+
+
+## Attention
 
 Self Attention is how BERT generates Contextual Embeddings. Each token is represented by a token embedding - which is a vector of fixed length. BERT takes in input embeddings xt for each input token vt
 of input sequence v1,v2,...vt . Embeddings are transformed by linear mappings to query vectors Q, key vectors K, value Vectors V
@@ -63,10 +95,18 @@ BERT generating the representation of each word in the sentence
 
 Difference between BERT versions like base and large are the number of layers of encoders. Base contains 12 layers whereas large contains 24. 
 
+## Visualizing Attention
+
+In the BERTology paper [4] authors look at the various ways in which attention affects the output result. Following is a illustration of the types of matrices that are constructed by the Model with Attention values. 
+
 ![attention patterns in BERT](image-9.png)
 attention patterns in BERT [4]
 
+A interactive way of dealing with attention can be done by the following notebook. The example in the notebook can be repalced with a custom example. The notebook demonstrates the many layers and heads that are used for a simple BERT version.
+
 [Visualizing BERT](https://colab.research.google.com/github/davidarps/2022_course_embeddings_and_transformers/blob/main/Visualizing_Attention_with_BertViz.ipynb#scrollTo=IAqLLQofc7IZ) 
+
+## Embeddings
 
 BERT takes Input data as embeddings using the layers indicated below
 
@@ -76,9 +116,11 @@ BERT takes Input data as embeddings using the layers indicated below
 
 Lets look at how tokens and embeddings affect the BERT process 
 
-Sentence A: Paris is a beautiful city.
+Sentence A: Paris is a beautiful city
 
-breaking up the above sentence into tokens we get 
+Sentence B: I love Paris
+
+Combining the above two sentences and breaking up them into tokens we get 
 
 `
 tokens = [Paris, is, a, beautiful, city, I, love, Paris]
@@ -209,4 +251,4 @@ extending Pre Trained LLMs
 
 17. Foundation Models for Natural Language Processing, Springer 2023, Sven Gisselbach
 
-
+18. Getting Started with Google BERT , Packt Publishing, Sudharshan Ravichandran 2023
