@@ -17,6 +17,7 @@ Bidirectional Encoder Representation from Transformer (BERT) are autoencoders (A
 1. Question Answering
 2. Text Generation
 3. Sentence Classification
+4. Text Summarization
 
 Its success is largely due to its ability to do context-based embeddings, unlike context free embeddings like word2Vec
 
@@ -54,7 +55,9 @@ The size of BERT vocabulary is 30K tokens. Input text is converted to Tokens by 
 [MASK]
 ` - This is to signal the Masked word that BERT would need to predict
 
-
+`
+[PAD]
+` - Spacer to increase length of tokens to keep all tokens consistent in length
 
 ## Attention
 
@@ -115,7 +118,9 @@ A interactive way of dealing with attention can be done by the following noteboo
 
 ## Pre-Training
 
-BERT is pre-trained on two broad tasks
+In the `Pretrained Students learn better` paper [2] the authors explore the impact of pretrainig on compact models. state-of-the-art models are expensive both in the cost and computational complexity sense. The authors explored a way to get the same gains that a large model would by pre-training compact models. 
+
+BERT is pre-trained on two unsupervised tasks
 
 1. Masked Language Modelling (MLM)
 2. Next Sentence Prediction (NSP)
@@ -204,7 +209,11 @@ To visualize the above example we have the following image that has the input te
 
 ## Finetuning BERT
 
-pre-training a BERT model allows it to learn syntactic and semantic properties of the language. This can be used used for training tasks for subsequent fine tuning - this is called transfer learning as it allows the pretraining knowledge to be transfered to a related application [17]. Finetuning is done by classification solved by a logistic classifier L to the output embedding of the [CLS] token at position 1 of BERT's last encoder block [17]   
+pre-training a BERT model allows it to learn syntactic and semantic properties of the language. This can be used used for training tasks for subsequent fine tuning. 
+
+Fine tuning allows the model to regress on smaller amount of data for a specific task which leads to better model in less data , less time. The entire model, including the pre-trained layers and the new task-specific layers, is trained on the labeled dataset. The weights are adjusted to optimize performance on the new task while retaining the language understanding learned during pre-training. Fine tuning also generally requires change in architecture like adding a new layer of logistic classifiers. The output of this exercise is that the skill learned can be transfered to similar problem types. This is called Transfer Learning. This ability is the main reason behind the fame for BERT type models. 
+
+`Pre-training + Fine tuning = Transfer learing` 
 
 ![Finetuning BERT](image-7.png)
 4 common finetuning tasks
@@ -225,6 +234,27 @@ Text pair classification (NSP) example given is `It rains` and `the sun shines` 
 For NER example we have `Joe Biden went to New York` and BERT is able to identify the parts of sentence as Person, Object and Location
 
 For Span prediction the input question is `who discovered America` and the answer is identified as `Columbus` 
+
+[Tiger Q&A Example](https://colab.research.google.com/drive/1GeWp-YmNha3ORYeyehR9UGLGYtYc14sM?usp=sharing)
+
+
+### Many BERTs
+
+as the field of NLP continues to evolve, various BERT-based models have been developed to address specific limitations, enhance performance, and optimize for different use cases.
+
+| Model                                                                                             | Functionality                                                                                                                                            |
+|---------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [ALBERT](https://arxiv.org/pdf/1909.11942.pdf)                                                    | A lite version of BERT that reduces model size by sharing parameters across layers and decomposing the embedding matrix.                                  |
+| [RoBERTa: A Robustly Optimized BERT Pre-training Approach](https://arxiv.org/pdf/1907.11692.pdf)  | Enhances BERT by training with more data, larger batches, and longer sequences. Removes Next Sentence Prediction (NSP) task.                              |
+| [ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators](https://arxiv.org/pdf/2003.10555.pdf) | Uses a different approach by training a discriminator to distinguish between real and fake tokens created by a generator, making it more sample efficient. |
+| [SpanBERT: Improving Pre-training by Representing and Predicting Spans](https://arxiv.org/pdf/1907.10529v3.pdf) | Focuses on span-level prediction tasks rather than token-level, improving performance on span-based tasks like question answering.                        |
+| [Distilling the Knowledge in a Neural Network](https://arxiv.org/pdf/1503.02531.pdf)              | Introduces the concept of model distillation, where a smaller model (student) learns from a larger model (teacher).                                       |
+| [DistilBERT: a distilled version of BERT: smaller, faster, cheaper and lighter](https://arxiv.org/pdf/1910.01108.pdf) | Distills BERT into a smaller, faster, and cheaper model that retains 97% of BERT's performance while being 60% faster.                                   |
+| [TinyBERT: Distilling BERT for Natural Language Understanding](https://arxiv.org/pdf/1909.10351.pdf) | Further compresses BERT using a two-stage learning framework, aiming to achieve a smaller model with competitive performance.                            |
+| [Distilling Task-Specific Knowledge from BERT into Simple Neural Networks](https://arxiv.org/pdf/1903.12136.pdf) | Focuses on task-specific distillation where BERT's knowledge for a specific task is distilled into a simpler neural network, improving efficiency.       |
+
+
+
 
 
 # GPT Models
@@ -296,3 +326,20 @@ extending Pre Trained LLMs
 17. Foundation Models for Natural Language Processing, Springer 2023, Sven Gisselbach
 
 18. Getting Started with Google BERT , Packt Publishing, Sudharshan Ravichandran 2023
+
+19. [ALBERT: A Lite BERT for Self-supervised Learning of Language Representations](https://arxiv.org/pdf/1909.11942.pdf)
+
+20. [RoBERTa: A Robustly Optimized BERT Pre-training Approach](https://arxiv.org/pdf/1907.11692.pdf)
+
+21. [ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators](https://arxiv.org/pdf/2003.10555.pdf)
+
+22. [SpanBERT: Improving Pre-training by Representing and Predicting Spans](https://arxiv.org/pdf/1907.10529v3.pdf)
+
+23. [Distilling the Knowledge in a Neural Network](https://arxiv.org/pdf/1503.02531.pdf)
+
+24. [DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter](https://arxiv.org/pdf/1910.01108.pdf)
+
+25. [TinyBERT: Distilling BERT for Natural Language Understanding](https://arxiv.org/pdf/1909.10351.pdf)
+
+26. [Distilling Task-Specific Knowledge from BERT into Simple Neural Networks](https://arxiv.org/pdf/1903.12136.pdf)
+
