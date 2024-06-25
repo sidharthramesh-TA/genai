@@ -355,3 +355,6 @@ extending Pre Trained LLMs
 
 26. [Distilling Task-Specific Knowledge from BERT into Simple Neural Networks](https://arxiv.org/pdf/1903.12136.pdf)
 
+27. [Transformer Explainer](https://poloclub.github.io/transformer-explainer/)
+
+28. [BERT compendium](https://huggingface.co/docs/transformers/model_doc/bert)
