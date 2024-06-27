@@ -349,6 +349,17 @@ Technical Report
 
 To get a LLM model to do what we want we have to give a semantically charged input - Prompt to get the LLM to give us an output that it associates with the Prompt
 
+## Changing Nature of ChatGPT
+
+Models like 3.5 and 4 getting evaluated for problems like
+
+1. Math problems
+2. Sensitive/dangerous questions
+3. Opinion surveys
+4. Multi-hop knowledge-intensive questions
+5. Generating code
+6. US Medical License tests
+7. Visual reasoning
 
 
 
