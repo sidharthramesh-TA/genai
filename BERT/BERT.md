@@ -313,6 +313,9 @@ GPT was first released a long time ago , it wasnt really great in solving NLP ta
 
 ![GPT2 sizes](image-30.png)
 
+`GPT + Chat interface + Appropriate content check = ChatGPT`
+
+
 
 ### GPT 1
 
@@ -326,6 +329,8 @@ GPT was first released a long time ago , it wasnt really great in solving NLP ta
 
 ![GPT 3 Gif](05-gpt3-generate-output-context-window.gif)
 
+The big leap in performance was due to Reinforcement Learning with human feedback
+
 ### GPT 3.5
 
 ![Exam Performance](image-31.png)
@@ -336,12 +341,9 @@ Technical Report
 
 ## Learning types
 
-1. Zero Shot Learning
-2. One Shot Learning
-3. Few Shot Learning - in the words of Open AI , all LLMs are few shot learning
-
-4. Retrival Augmented Generation (RAG) 
-5. Reinforcement Learning from Human Feedback (RLHF) - alignment
+1. Zero Shot Learning - No prior examples given
+2. One Shot Learning - One example to set context
+3. Few Shot Learning - Multiple Examples given, in the words of Open AI , all LLMs are few shot learning
 
 ## Prompt Engineering
 
