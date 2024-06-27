@@ -271,7 +271,9 @@ as the field of NLP continues to evolve, various BERT-based models have been dev
 
 # GPT Models
 
-This section is about exploring GPT Models. Autoregressive language models (AR) or Generative Pre-Trained (GPT) models recieve a subsequence v1, v2, .... vn of input tokens and generate contextual embeddings for each token and use that to predict next token, thus predicting all the tokens in a sentence [17]. 
+This section is about exploring GPT Models. Autoregressive language models (AR) or Generative Pre-Trained (GPT) were Developed by Open AI in 2018 , they are a Decoder only architecture and excel at Natural Language Generation (NLG) tasks such as summarization, creative writing etc. GPT models recieve a subsequence v1, v2, .... vn of input tokens and generate contextual embeddings for each token and use that to predict next token, thus predicting all the tokens in a sentence [17]. 
+
+`ChatGPT = GPT + Chat Finetuning`
 
 We will briefly look at the historical devleopment over the past decades and observe the technical evolution that kept adding to the innovations streak that eventually lead to the breakthroughs in LLMs 
 
@@ -297,6 +299,53 @@ Increase in the number of Parameters. [15]
 ![extending Pre Trained LLMs](image-6.png)
 extending Pre Trained LLMs
 
+## Parameters for inference
+
+1. Temperature - Like Simulated Annealing , makes the model more confident or less confident. Lower value makes it select highest propapble answer, higher value makes it select a lower probable random answer
+2. top_k - How many tokens the model considers when generating
+3. top_p - only considers token from the top X% of confidences
+4. beams - How many tokens out should we consider
+5. do_sample - if set to true, randomness is introduced in selection
+
+## GPT 
+
+GPT was first released a long time ago , it wasnt really great in solving NLP tasks so thats where Open AI iterated over to GPT 2. 
+
+![GPT2 sizes](image-30.png)
+
+
+### GPT 1
+
+![alt text](image-32.png)
+
+### GPT 2
+
+![GPT 2 Gif](gpt-2-autoregression-2.gif)
+
+### GPT 3
+
+![GPT 3 Gif](05-gpt3-generate-output-context-window.gif)
+
+### GPT 3.5
+
+![Exam Performance](image-31.png)
+
+### GPT 4
+
+Technical Report 
+
+## Learning types
+
+1. Zero Shot Learning
+2. One Shot Learning
+3. Few Shot Learning - in the words of Open AI , all LLMs are few shot learning
+
+4. Retrival Augmented Generation (RAG) 
+5. Reinforcement Learning from Human Feedback (RLHF) - alignment
+
+## Prompt Engineering
+
+To get a LLM model to do what we want we have to give a semantically charged input - Prompt to get the LLM to give us an output that it associates with the Prompt
 
 
 
@@ -358,3 +407,8 @@ extending Pre Trained LLMs
 27. [Transformer Explainer](https://poloclub.github.io/transformer-explainer/)
 
 28. [BERT compendium](https://huggingface.co/docs/transformers/model_doc/bert)
+
+29. [GPT Playground](https://textsynth.com/completion.html)
+
+30. [RAG Paper](https://arxiv.org/pdf/2005.11401v4)
+
