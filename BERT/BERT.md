@@ -424,7 +424,7 @@ an innovation that is getting some recognition is the Predictable Scaling mechan
 
 One other innovation that got bundled up was Multimodal capacity which allows GPT 4 to See , Hear and Speak. GPT 4o has successfully demonstrated ability to speak and respond to voice utterance. 
 
-### Parameters for inference
+## GPT Example
 
 1. Temperature - Like Simulated Annealing , makes the model more confident or less confident. Lower value makes it select highest propapble answer, higher value makes it select a lower probable random answer
 2. top_k - How many tokens the model considers when generating
@@ -438,13 +438,9 @@ Open AI has made available [Tokenizer viz](https://platform.openai.com/tokenizer
 ![alt text](image-34.png)
 
 
-## Prompt Engineering
-
-To get a LLM model to do what we want we have to give a semantically charged input - Prompt to get the LLM to give us an output that it associates with the Prompt
-
 ## Changing Nature of ChatGPT
 
-Models like 3.5 and 4 getting evaluated for problems like
+Models like 3.5 and 4 are evaluated for problems like
 
 1. Math problems
 2. Sensitive/dangerous questions
@@ -453,7 +449,6 @@ Models like 3.5 and 4 getting evaluated for problems like
 5. Generating code
 6. US Medical License tests
 7. Visual reasoning
-
 
 ![alt text](image-33.png)
 
