@@ -271,25 +271,25 @@ as the field of NLP continues to evolve, various BERT-based models have been dev
 
 # GPT Models
 
-This section is about exploring GPT Models. Autoregressive language models (AR) or Generative Pre-Trained (GPT) were Developed by Open AI in 2018 , they are a Decoder only architecture and excel at Natural Language Generation (NLG) tasks such as summarization, creative writing etc. GPT models recieve a subsequence v1, v2, .... vn of input tokens and generate contextual embeddings for each token and use that to predict next token, thus predicting all the tokens in a sentence [17]. 
-
-We will briefly look at the historical devleopment over the past decades and observe the technical evolution that kept adding to the innovations streak that eventually lead to the breakthroughs in LLMs 
+In this section we will briefly look at the historical devleopment over the past decades and observe the technical evolution that kept adding to the innovations streak that eventually lead to the breakthroughs in LLMs 
 
 ![Development of LLMs](image.png)
 Evolution process of 4 generations of LMs. [6]
 
 In the above image we see that Statistical LMs were getting investigated from the 90s. Initially were applied only for the relatively smaller tasks like spell-check as Models were limited to looking at only a single word.
 
-![Existing Large Language Models](image-1.png)
-Timeline of LLMs. [6]
+Autoregressive language models (AR) or Generative Pre-Trained (GPT) were Developed by Open AI in 2018 , they are a Decoder only architecture and excel at Natural Language Generation (NLG) tasks such as summarization, creative writing etc. GPT models recieve a subsequence v1, v2, .... vn of input tokens and generate contextual embeddings for each token and use that to predict next token using `Maximum Likelihood estimation` , thus predicting all the tokens in a sentence [17].
 
-Above image is a zoomed out version of the timelines where publicly available LLMs were released. We observe the word soup of LLMs that are released from 2020 till 23 and the competitive landscape with many companies released thier own versions and making them available to the public. 
+![alt text](image-45.png)
 
-![Increase in the number of Parameters](image-5.png)
-Increase in the number of Parameters. [15]
+The quality of a language model may be measured by the probability p(v1,v2...vt) of a given text collection v1,v2,....vt such that if we normalize the inverse of the number of Tokens T we get perplexity. GPT version progress correspond to lowering the perplexity on benchmark data sets. GPT 2 demonstrated the lowering from 46.5 to 35.8% [17]
 
-![extending Pre Trained LLMs](image-6.png)
-extending Pre Trained LLMs
+
+![alt text](image-46.png)
+
+`Perplexity` is a measure of probability of text ,
+ 
+ `low perplexity = high probability`
 
 ## GPT 
 
@@ -336,8 +336,9 @@ modest improvements, GPT was still lacking with respect to coherent response. Tr
  GPT training data needed more so the scale was increased to 1.5B parameters and was trained on webText data. Training data was the large WebText data which was labelled, add to that was the probabilistic approach for multi-task solving , which predicts the output based on the input and task information. 
 
 ```
- Since the (task-specific) supervised objective is the same as the unsupervised (language modeling) objective
-but only evaluated on a subset of the sequence, the global minimum of the unsupervised objective is also the global minimum of the supervised objective (for various tasks)
+Since the (task-specific) supervised objective is the same as the unsupervised (language modeling) objective
+but only evaluated on a subset of the sequence, the global minimum of the unsupervised objective 
+is also the global minimum of the supervised objective (for various tasks)
 ```
 
 Some of the Tasks tested 
@@ -452,6 +453,19 @@ Models like 3.5 and 4 are evaluated for problems like
 
 ![alt text](image-33.png)
 
+
+## Comparable Models
+
+![Existing Large Language Models](image-1.png)
+Timeline of LLMs. [6]
+
+Above image is a zoomed out version of the timelines where publicly available LLMs were released. We observe the word soup of LLMs that are released from 2020 till 23 and the competitive landscape with many companies released thier own versions and making them available to the public. 
+
+![Increase in the number of Parameters](image-5.png)
+Increase in the number of Parameters. [15]
+
+![extending Pre Trained LLMs](image-6.png)
+extending Pre Trained LLMs
 
 # References
 
