@@ -292,6 +292,10 @@ The quality of a language model may be measured by the probability p(v1,v2...vt)
  
  `low perplexity = high probability`
 
+ ![alt text](image-52.png)
+
+ BERT vs GPT
+
 ## GPT 
 
 GPT was first released in June 2018 , it wasnt really great in solving NLP tasks so thats where Open AI iterated over to GPT 2 in Feb 2019. ChatGPT's own architecture can be estimated as follows
@@ -441,6 +445,9 @@ Open AI has made available [Tokenizer viz](https://platform.openai.com/tokenizer
 
 ![alt text](image-34.png)
 
+[Interactive GPT Example](https://poloclub.github.io/transformer-explainer/)
+
+[Tiger GPT example](https://colab.research.google.com/drive/14583--jQ7CMAdzFiU9a_reC_wPaSz2bQ#scrollTo=UbktPYu6uHnG)
 
 ## Changing Nature of ChatGPT
 
