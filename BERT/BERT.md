@@ -300,11 +300,13 @@ GPT was first released in June 2018 , it wasnt really great in solving NLP tasks
 Since the first release of OpenAI's GPT , there have been various iterations and use cases that were tried and tested out. Initial ones being more academic in nature and later ones being more enterprise and general public oriented. Initial Models were strictly text based whereas GPT 3 onwards image and videos also got included as domains to explore gainful applications.
 
 ![Open AI Chat GPT timeline](image-2.png)
+
 GPT timelines. [6]
 
 Notice that even if GPT 3 was released in 2020, it wasnt until the release of ChatGPT which used GPT 3.5 in Nov 2022 that it the LLM development got to prominance. The magic ingredient that got added to the GPT3 recipe was Human Alignment. This is really just means making GPT 3 more tuned to giving responses the way we expect. Also called Human-in-the-loop, the GPT 3 model was made to undergo Reinforcement Learning from Human in the Loop (RHLF). This basically is the Thumbs up or Thumbs down that you sometimes get prompted when youre working with ChatGPT and responses obtained are weighted with a positive response meaning reward and a negative response meaning punishment to the Agent. 
 
 ![Chat GPT models and properties](image-4.png)
+
 GPT models and properties. [15]
 
 We notice the nonlinear increase of training data and the linear increase in output sequences that GPT is able to generate.
@@ -314,6 +316,7 @@ We notice the nonlinear increase of training data and the linear increase in out
 In the  [GPT Paper](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf) circa 2018, developers in OpenAI demonstrate thier model which was able to solve some Natural Language Understanding (NLU) tasks. It used generative, decoder only Transformer architecture and used hybrid approach of unsupervised pretraining and supervised fine tuning [Survey]. The breakthrough was to demonstrate that a generic model could outperform a specifically designed algo that was made for solving a specific NLU problem [18]. The innovation here was Generative Pre Training or GPT as we've come to know it was able to establish the principle that language models could sucessfully predict the next word.
 
 ![alt text](image-35.png)
+
 Architecture of GPT model
 
 GPT models were tested on things like
@@ -323,6 +326,7 @@ GPT models were tested on things like
 3. Commonsense Reasoning - 4%
 
 ![alt text](image-36.png)
+
 Relative performance
 
 modest improvements, GPT was still lacking with respect to coherent response. Training data while impressive at 117M parameters was not enough.
@@ -371,29 +375,37 @@ GPT 3 basically ushered in the era of LLM, what was prior called as PLMs now eve
 ![GPT 3 Gif](05-gpt3-generate-output-context-window.gif)
 
 ![alt text](image-37.png)
+
 Large models make effecient use of Few Shot learning
 
 ![alt text](image-38.png)
+
 Examples of Few Shot learning
 
 ![alt text](image-39.png)
+
 Comparison of Compute Training
 
 ![alt text](image-40.png)
+
 Q & A accuracy
 
 ![GPT 3 example](image-41.png)
+
 Example of 175B parameters model performing better with few shot learning
 
 ![alt text](image-42.png)
+
 SAT Analogies
 
 ![alt text](image-43.png)
+
 News text generation
 
 As impressive GPT 3's performance was it also highlighted the need for being mindful for Bias and Fairness.
 
 ![alt text](image-44.png)
+
 Example of Bias in GPT 3
 
 ### GPT 3.5
