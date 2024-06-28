@@ -402,7 +402,7 @@ SAT Analogies
 
 News text generation
 
-As impressive GPT 3's performance was it also highlighted the need for being mindful for Bias and Fairness.
+As impressive GPT 3's performance are it also highlighted the need for being mindful for **Bias and Fairness**.
 
 ![alt text](image-44.png)
 
