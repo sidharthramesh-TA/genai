@@ -274,6 +274,7 @@ as the field of NLP continues to evolve, various BERT-based models have been dev
 In this section we will briefly look at the historical devleopment over the past decades and observe the technical evolution that kept adding to the innovations streak that eventually lead to the breakthroughs in LLMs 
 
 ![Development of LLMs](image.png)
+
 Evolution process of 4 generations of LMs. [6]
 
 In the above image we see that Statistical LMs were getting investigated from the 90s. Initially were applied only for the relatively smaller tasks like spell-check as Models were limited to looking at only a single word.
@@ -415,6 +416,8 @@ Now GPT 3 was nice and all but it was still not good enough. Before Open AI woul
 
 ![Exam Performance](image-31.png)
 
+Studies performed on understanding the robustness of 3.5 with prior models were published by [chinese research group](https://arxiv.org/pdf/2303.00293) in 2023 exploring the different attributes that go into generating responses and the quality of response. This one [paper](https://arxiv.org/pdf/2303.10420) in particular compares 3.5 with 3 and presents its findings 
+
 ### GPT 4 or Technical Report
 
 Unlike previous models OpenAI has not released GPT 4 yet, or has talked about the architectural innovations with scientific rigor. Instead they have released a whitepaperesque content on the performance and use cases that GPT 4 has been subjected to. 
@@ -441,7 +444,9 @@ Open AI has made available [Tokenizer viz](https://platform.openai.com/tokenizer
 
 ## Changing Nature of ChatGPT
 
-Models like 3.5 and 4 are evaluated for problems like
+GPT's like other models have been subject to intense iterations and improvements over time. Several studies have been made to understand the performance of models and to benchmark them against new heights. One such [paper that compares ChatGPT 3.5 and 4](https://ar5iv.labs.arxiv.org/html/2307.09009) gives an insight on the various problems that were subjected to it  
+
+Models like ChatGPT 3.5 and 4 are evaluated for problems like
 
 1. Math problems
 2. Sensitive/dangerous questions
@@ -452,6 +457,26 @@ Models like 3.5 and 4 are evaluated for problems like
 7. Visual reasoning
 
 ![alt text](image-33.png)
+
+Overview of Performance and insturction drift
+
+![alt text](image-47.png)
+
+Math Example
+
+![Answering Controversies](image-48.png)
+
+Answering Controversial Questions
+
+![Code Adherence](image-49.png)
+
+Executable code response reduced from 52% to 10%
+
+![alt text](image-51.png)
+
+GPT 4 has reduced instruction following capacity
+
+
 
 
 ## Comparable Models
@@ -528,4 +553,10 @@ extending Pre Trained LLMs
 29. [GPT Playground](https://textsynth.com/completion.html)
 
 30. [RAG Paper](https://arxiv.org/pdf/2005.11401v4)
+
+31. [Chat GPT's Changing behaviour](https://ar5iv.labs.arxiv.org/html/2307.09009)
+
+32. [GPT 3.5 robustness](https://arxiv.org/pdf/2303.00293)
+
+33. [GPT 3 vs GPT 3.5](https://arxiv.org/pdf/2303.10420)
 
