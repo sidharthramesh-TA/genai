@@ -273,8 +273,6 @@ as the field of NLP continues to evolve, various BERT-based models have been dev
 
 This section is about exploring GPT Models. Autoregressive language models (AR) or Generative Pre-Trained (GPT) were Developed by Open AI in 2018 , they are a Decoder only architecture and excel at Natural Language Generation (NLG) tasks such as summarization, creative writing etc. GPT models recieve a subsequence v1, v2, .... vn of input tokens and generate contextual embeddings for each token and use that to predict next token, thus predicting all the tokens in a sentence [17]. 
 
-`ChatGPT = GPT + Chat Finetuning`
-
 We will briefly look at the historical devleopment over the past decades and observe the technical evolution that kept adding to the innovations streak that eventually lead to the breakthroughs in LLMs 
 
 ![Development of LLMs](image.png)
@@ -287,19 +285,134 @@ Timeline of LLMs. [6]
 
 Above image is a zoomed out version of the timelines where publicly available LLMs were released. We observe the word soup of LLMs that are released from 2020 till 23 and the competitive landscape with many companies released thier own versions and making them available to the public. 
 
-![Open AI Chat GPT timeline](image-2.png)
-Chat GPT timelines. [6]
-
-![Chat GPT models and properties](image-4.png)
-Chat GPT models and properties. [15]
-
 ![Increase in the number of Parameters](image-5.png)
 Increase in the number of Parameters. [15]
 
 ![extending Pre Trained LLMs](image-6.png)
 extending Pre Trained LLMs
 
-## Parameters for inference
+## GPT 
+
+GPT was first released in June 2018 , it wasnt really great in solving NLP tasks so thats where Open AI iterated over to GPT 2 in Feb 2019. ChatGPT's own architecture can be estimated as follows
+
+`GPT + Chat interface + Appropriate content check = ChatGPT`
+
+Since the first release of OpenAI's GPT , there have been various iterations and use cases that were tried and tested out. Initial ones being more academic in nature and later ones being more enterprise and general public oriented. Initial Models were strictly text based whereas GPT 3 onwards image and videos also got included as domains to explore gainful applications.
+
+![Open AI Chat GPT timeline](image-2.png)
+GPT timelines. [6]
+
+Notice that even if GPT 3 was released in 2020, it wasnt until the release of ChatGPT which used GPT 3.5 in Nov 2022 that it the LLM development got to prominance. The magic ingredient that got added to the GPT3 recipe was Human Alignment. This is really just means making GPT 3 more tuned to giving responses the way we expect. Also called Human-in-the-loop, the GPT 3 model was made to undergo Reinforcement Learning from Human in the Loop (RHLF). This basically is the Thumbs up or Thumbs down that you sometimes get prompted when youre working with ChatGPT and responses obtained are weighted with a positive response meaning reward and a negative response meaning punishment to the Agent. 
+
+![Chat GPT models and properties](image-4.png)
+GPT models and properties. [15]
+
+We notice the nonlinear increase of training data and the linear increase in output sequences that GPT is able to generate.
+
+### GPT 1 or Generative Pre Training
+
+In the  [GPT Paper](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf) circa 2018, developers in OpenAI demonstrate thier model which was able to solve some Natural Language Understanding (NLU) tasks. It used generative, decoder only Transformer architecture and used hybrid approach of unsupervised pretraining and supervised fine tuning [Survey]. The breakthrough was to demonstrate that a generic model could outperform a specifically designed algo that was made for solving a specific NLU problem [18]. The innovation here was Generative Pre Training or GPT as we've come to know it was able to establish the principle that language models could sucessfully predict the next word.
+
+![alt text](image-35.png)
+Architecture of GPT model
+
+GPT models were tested on things like
+
+1. Word Similarity - 5.7%
+2. Q & A - 4.2%
+3. Commonsense Reasoning - 4%
+
+![alt text](image-36.png)
+Relative performance
+
+modest improvements, GPT was still lacking with respect to coherent response. Training data while impressive at 117M parameters was not enough.
+
+### GPT 2 or Unsupervised Multi Task Learner
+
+ GPT training data needed more so the scale was increased to 1.5B parameters and was trained on webText data. Training data was the large WebText data which was labelled, add to that was the probabilistic approach for multi-task solving , which predicts the output based on the input and task information. 
+
+```
+ Since the (task-specific) supervised objective is the same as the unsupervised (language modeling) objective
+but only evaluated on a subset of the sequence, the global minimum of the unsupervised objective is also the global minimum of the supervised objective (for various tasks)
+```
+
+Some of the Tasks tested 
+
+1. Children's Book test
+2. Commonsense Reasoning
+3. Q & A
+4. Summarization
+
+
+Now GPT 2 was a generic model that was able to perform on multiple NLU tasks but was not able to produce significantly better results. One reason was Model size.
+
+![GPT 2 Gif](gpt-2-autoregression-2.gif)
+
+### GPT 3 or Few Shot Learners
+
+`GPT 2 +  Scale = GPT 3`
+
+Developers in Open AI knew they had something that would work, it was showing promise but was hungry was data. They quickly iterated and fed it 175B parameters and tested it out Circa 2020. Along with the scale was the innovation in approach called ` in-context learning (ICL) ` which introduced prompting as a way to make the model learn. Zero shot and Few Shot learning were introduced as a way to make the model do tasks that it was not explicitly trained on. 
+
+Learning Examples
+
+1. Zero Shot Learning - No prior examples given
+2. One Shot Learning - One example to set context
+3. Few Shot Learning - Multiple Examples given, in the words of Open AI , all LLMs are few shot learning
+
+```
+Pretraining = correct word prediction
+
+ICL = correct task solution
+```
+
+GPT 3 basically ushered in the era of LLM, what was prior called as PLMs now eveolved into LLM where the sheer scale of the model gives it power to do tasks that it was not explicitly trained for. So much was the influence of few shot learning in the development of GPT 3 that the authors dubbed the title of the paper as `few shot learning` much like the transformers paper was titled on `attention`
+
+![GPT 3 Gif](05-gpt3-generate-output-context-window.gif)
+
+![alt text](image-37.png)
+Large models make effecient use of Few Shot learning
+
+![alt text](image-38.png)
+Examples of Few Shot learning
+
+![alt text](image-39.png)
+Comparison of Compute Training
+
+![alt text](image-40.png)
+Q & A accuracy
+
+![GPT 3 example](image-41.png)
+Example of 175B parameters model performing better with few shot learning
+
+![alt text](image-42.png)
+SAT Analogies
+
+![alt text](image-43.png)
+News text generation
+
+As impressive GPT 3's performance was it also highlighted the need for being mindful for Bias and Fairness.
+
+![alt text](image-44.png)
+Example of Bias in GPT 3
+
+### GPT 3.5
+
+Now GPT 3 was nice and all but it was still not good enough. Before Open AI would release models that developers and data scientists who knew how to work with it would get interested with new releases. Now that GPT 3 had demonstrated conversational ability Open AI was preparing for getting bigger audience but before they could do that they wanted to make sure the vices of social media interactions could be controlled (Microsoft had already had a episode of releasing a bot on twitter and within one day the bot due to the learning it had got from the interactions from public started generating offensive responses and had to be taken down in a day) and the model be made more responsive to human input. One big leap in performance was due to Reinforcement Learning with human feedback. Open AI took the incremental gain that they got using Beta Users, added a conversational interface similar to popular chatting interfaces and made it available to the world Circa 2022 November - ChatGPT.
+
+![Exam Performance](image-31.png)
+
+### GPT 4 or Technical Report
+
+Unlike previous models OpenAI has not released GPT 4 yet, or has talked about the architectural innovations with scientific rigor. Instead they have released a whitepaperesque content on the performance and use cases that GPT 4 has been subjected to. 
+
+`GPT 3 - Malicious content + Intervention Alignment = GPT4`
+
+an innovation that is getting some recognition is the Predictable Scaling mechanism that can accurately predict final performance with small proportion of compute during model training.
+
+One other innovation that got bundled up was Multimodal capacity which allows GPT 4 to See , Hear and Speak. GPT 4o has successfully demonstrated ability to speak and respond to voice utterance. 
+
+### Parameters for inference
 
 1. Temperature - Like Simulated Annealing , makes the model more confident or less confident. Lower value makes it select highest propapble answer, higher value makes it select a lower probable random answer
 2. top_k - How many tokens the model considers when generating
@@ -307,43 +420,11 @@ extending Pre Trained LLMs
 4. beams - How many tokens out should we consider
 5. do_sample - if set to true, randomness is introduced in selection
 
-## GPT 
 
-GPT was first released a long time ago , it wasnt really great in solving NLP tasks so thats where Open AI iterated over to GPT 2. 
+Open AI has made available [Tokenizer viz](https://platform.openai.com/tokenizer) on its website that allows us to see the breaking up of words into Tokens
 
-![GPT2 sizes](image-30.png)
+![alt text](image-34.png)
 
-`GPT + Chat interface + Appropriate content check = ChatGPT`
-
-
-
-### GPT 1
-
-![alt text](image-32.png)
-
-### GPT 2
-
-![GPT 2 Gif](gpt-2-autoregression-2.gif)
-
-### GPT 3
-
-![GPT 3 Gif](05-gpt3-generate-output-context-window.gif)
-
-The big leap in performance was due to Reinforcement Learning with human feedback
-
-### GPT 3.5
-
-![Exam Performance](image-31.png)
-
-### GPT 4
-
-Technical Report 
-
-## Learning types
-
-1. Zero Shot Learning - No prior examples given
-2. One Shot Learning - One example to set context
-3. Few Shot Learning - Multiple Examples given, in the words of Open AI , all LLMs are few shot learning
 
 ## Prompt Engineering
 
@@ -361,6 +442,8 @@ Models like 3.5 and 4 getting evaluated for problems like
 6. US Medical License tests
 7. Visual reasoning
 
+
+![alt text](image-33.png)
 
 
 # References
