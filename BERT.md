@@ -29,7 +29,7 @@ Transformers - Decoders = BERT
 
 ### BERT Architecture
 
-![alt text](image-25.png)
+![alt text](/BERT/image-25.png)
 
 ### Whats so Bidirectional about BERT ? 
 
@@ -64,27 +64,27 @@ The size of BERT vocabulary is 30K tokens. Input text is converted to Tokens by 
 Self-attention, also known as intra-attention, is a mechanism within neural networks that allows the model to weigh the importance of different words in a sequence relative to each other. Self Attention is how BERT generates Contextual Embeddings . Each token is represented by a token embedding - which is a vector of fixed length. BERT takes in input embeddings xt for each input token vt
 of input sequence v1,v2,...vt . Embeddings are transformed by linear mappings to query vectors Q, key vectors K, value Vectors V
 
-![alt text](image-28.png)
+![alt text](/BERT/image-28.png)
 
 Here, \( X \) is the input embedding, and \( W_Q \), \( W_K \), \( W_V \) are learnable weight matrices.
 
 Multi-headed attention is an extension of the self-attention mechanism that allows the model to focus on different parts of the sequence from multiple perspectives or "heads" simultaneously. Each head operates independently, learning different aspects of the relationships between words.
 
-![alt text](image-29.png)
+![alt text](/BERT/image-29.png)
 
 association score between the tokens are computed by taking a scalar product between query vector and key vector
 
-![obligatory math](image-10.png)
+![obligatory math](/BERT/image-10.png)
 
 above equation is also called scalar dot product attention and is normalized to a probability score using softmax function. We get the self attention algorithm that was proposed in the Attention paper [3] 
 
-![self attention](image-11.png)
+![self attention](/BERT/image-11.png)
 
-where ![alt text](image-12.png) is the new contextual embedding
+where ![alt text](/BERT/image-12.png) is the new contextual embedding
 
-![alt text](image-13.png) is the association score
+![alt text](/BERT/image-13.png) is the association score
 
-![ VT](image-14.png) is the weighted average of the value vector 
+![ VT](/BERT/image-14.png) is the weighted average of the value vector 
 
 the resulting embedding is a contextual embedding as it contains information about all words in the input text [17]
 
@@ -96,16 +96,16 @@ Sentence B: Python is my favorite programming language
 
 plotting the attention relationships for the sentences we get 
 
-![sentence A](image-15.png)   
+![sentence A](/BERT/image-15.png)   
 Example 1
 
-![sentence B](image-16.png)
+![sentence B](/BERT/image-16.png)
 
 Example 2
 
 BERT is able to discern dynamic embeddings based on context as opposed to context free models like word2Vec which generate static embeddings without taking context into account. This is due to the impact of multi head attention mechanism [18]. What multi head attention here means is that each word in the sentence is related to all the words and thereby a relationship is derived.  
 
-![Sentence A- BERT](image-17.png)
+![Sentence A- BERT](/BERT/image-17.png)
 
 BERT generating the representation of each word in the sentence. 
 
@@ -117,7 +117,7 @@ Difference between BERT versions like base and large are the number of layers of
 
 In the BERTology paper [4] authors look at the various ways in which attention affects the output result. Following is a illustration of the types of matrices that are constructed by the Model with Attention values. 
 
-![attention patterns in BERT](image-9.png)
+![attention patterns in BERT](/BERT/image-9.png)
 
 attention patterns in BERT [4]
 
@@ -160,19 +160,19 @@ tokens = [Paris, is, a, beautiful, city, I, love, Paris]
 tokens = [ [CLS], Paris, is, a, beautiful, city, [SEP], I, love, Paris, [SEP]]
 `
 
-![Token Embeddings](image-18.png)
+![Token Embeddings](/BERT/image-18.png)
 
 Token Embeddings
 
 In order to make it easier for the Model to understand sentence starting and ending following tokens are added to the array. [CLS] is added at the beginning of the sentence whereas [SEP] are added at the end of every sentence to indicate end of every sentence. 
 
-![Segment Embeddings](image-19.png)
+![Segment Embeddings](/BERT/image-19.png)
 
 Segment Embeddings
 
 Inorder to differentiate between sentences Segment embedding is done, EA in the above image relates to the first sentence whereas EB relates to the second sentence. 
 
-![Position Embeddings](image-20.png)
+![Position Embeddings](/BERT/image-20.png)
 
 Position Embeddings
 
@@ -180,17 +180,17 @@ To preserve the word order in the input sentence we have to provide a way to tag
 
 Combining the above embeddings we get 
 
-![Final embeddings](image-21.png)
+![Final embeddings](/BERT/image-21.png)
 
 Final Embeddings 
 
 BERT is an autoencoding language model which basically means that its able to read a given sentence left-to-right or right-to-left (Bidirectional) . During BERT training, a random 15% mask is applied on the words to train the network . Model reads the sentence in both directions and predicts the Masked word
 
-![alt text](image-22.png)
+![alt text](/BERT/image-22.png)
 
 Notice that the word City has been masked as part of the training. To predict Masked token, we pass that as input to a Feedforward network with a softmax activation. Feedforward + softmax takes in the input tokens and gives out a probability of the words used in the vocabulary 
 
-![Predicting Token](image-23.png)
+![Predicting Token](/BERT/image-23.png)
 
 We observe that City is returned as the word with highest probability, which is the right answer
 
@@ -214,20 +214,20 @@ There is no relation between Sentence B and A
 
 To visualize the above example we have the following image that has the input text sentences going through the 12 layer BERT base and is then passed over to the Feed Forward network and Softmax to predict the likely nature of Sentence B
 
-![alt text](image-26.png)
+![alt text](/BERT/image-26.png)
 
 ## Finetuning BERT
 
 pre-training a BERT model allows it to learn syntactic and semantic properties of the language. This can be used used for training tasks for subsequent fine tuning. 
 
 
-![alt text](image-27.png)
+![alt text](/BERT/image-27.png)
 
 Fine tuning allows the model to regress on smaller amount of data for a specific task which leads to better model in less data , less time. The entire model, including the pre-trained layers and the new task-specific layers, is trained on the labeled dataset. The weights are adjusted to optimize performance on the new task while retaining the language understanding learned during pre-training. Fine tuning also generally requires change in architecture like adding a new layer of logistic classifiers. The output of this exercise is that the skill learned can be transfered to similar problem types. This is called Transfer Learning. This ability is the main reason behind the fame for BERT type models. 
 
 `Pre-training + Fine tuning = Transfer learing` 
 
-![Finetuning BERT](image-7.png)
+![Finetuning BERT](/BERT/image-7.png)
 4 common finetuning tasks
 
 1. Text Classification - classification of resturant reviews as positive or negative 
@@ -236,7 +236,7 @@ Fine tuning allows the model to regress on smaller amount of data for a specific
 4. Span Prediction - this is to construct small sentences as response to a question and a pargraph of text which would contain the answer. 
 
 
-![examples of FT](image-8.png)
+![examples of FT](/BERT/image-8.png)
 
 
 Here we notice that for text classification the example given is `The sandwich was good and tasty` and BERT classifies the sentiment as `Positive`.
@@ -280,18 +280,18 @@ In the above image we see that Statistical LMs were getting investigated from th
 
 Autoregressive language models (AR) or Generative Pre-Trained (GPT) were Developed by Open AI in 2018 , they are a Decoder only architecture and excel at Natural Language Generation (NLG) tasks such as summarization, creative writing etc. GPT models recieve a subsequence v1, v2, .... vn of input tokens and generate contextual embeddings for each token and use that to predict next token using `Maximum Likelihood estimation` , thus predicting all the tokens in a sentence [17].
 
-![alt text](image-45.png)
+![alt text](/BERT/image-45.png)
 
 The quality of a language model may be measured by the probability p(v1,v2...vt) of a given text collection v1,v2,....vt such that if we normalize the inverse of the number of Tokens T we get perplexity. GPT version progress correspond to lowering the perplexity on benchmark data sets. GPT 2 demonstrated the lowering from 46.5 to 35.8% [17]
 
 
-![alt text](image-46.png)
+![alt text](/BERT/image-46.png)
 
 `Perplexity` is a measure of probability of text ,
  
  `low perplexity = high probability`
 
- ![alt text](image-52.png)
+ ![alt text](/BERT/image-52.png)
 
  BERT vs GPT
 
@@ -303,13 +303,13 @@ GPT was first released in June 2018 , it wasnt really great in solving NLP tasks
 
 Since the first release of OpenAI's GPT , there have been various iterations and use cases that were tried and tested out. Initial ones being more academic in nature and later ones being more enterprise and general public oriented. Initial Models were strictly text based whereas GPT 3 onwards image and videos also got included as domains to explore gainful applications.
 
-![Open AI Chat GPT timeline](image-2.png)
+![Open AI Chat GPT timeline](/BERT/image-2.png)
 
 GPT timelines. [6]
 
 Notice that even if GPT 3 was released in 2020, it wasnt until the release of ChatGPT which used GPT 3.5 in Nov 2022 that it the LLM development got to prominance. The magic ingredient that got added to the GPT3 recipe was Human Alignment. This is really just means making GPT 3 more tuned to giving responses the way we expect. Also called Human-in-the-loop, the GPT 3 model was made to undergo Reinforcement Learning from Human in the Loop (RHLF). This basically is the Thumbs up or Thumbs down that you sometimes get prompted when youre working with ChatGPT and responses obtained are weighted with a positive response meaning reward and a negative response meaning punishment to the Agent. 
 
-![Chat GPT models and properties](image-4.png)
+![Chat GPT models and properties](/BERT/image-4.png)
 
 GPT models and properties. [15]
 
@@ -319,7 +319,7 @@ We notice the nonlinear increase of training data and the linear increase in out
 
 In the  [GPT Paper](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf) circa 2018, developers in OpenAI demonstrate thier model which was able to solve some Natural Language Understanding (NLU) tasks. It used generative, decoder only Transformer architecture and used hybrid approach of unsupervised pretraining and supervised fine tuning [Survey]. The breakthrough was to demonstrate that a generic model could outperform a specifically designed algo that was made for solving a specific NLU problem [18]. The innovation here was Generative Pre Training or GPT as we've come to know it was able to establish the principle that language models could sucessfully predict the next word.
 
-![alt text](image-35.png)
+![alt text](/BERT/image-35.png)
 
 Architecture of GPT model
 
@@ -329,7 +329,7 @@ GPT models were tested on things like
 2. Q & A - 4.2%
 3. Commonsense Reasoning - 4%
 
-![alt text](image-36.png)
+![alt text](/BERT/image-36.png)
 
 Relative performance
 
@@ -379,37 +379,37 @@ GPT 3 basically ushered in the era of LLM, what was prior called as PLMs now eve
 
 ![GPT 3 Gif](05-gpt3-generate-output-context-window.gif)
 
-![alt text](image-37.png)
+![alt text](/BERT/image-37.png)
 
 Large models make effecient use of Few Shot learning
 
-![alt text](image-38.png)
+![alt text](/BERT/image-38.png)
 
 Examples of Few Shot learning
 
-![alt text](image-39.png)
+![alt text](/BERT/image-39.png)
 
 Comparison of Compute Training
 
-![alt text](image-40.png)
+![alt text](/BERT/image-40.png)
 
 Q & A accuracy
 
-![GPT 3 example](image-41.png)
+![GPT 3 example](/BERT/image-41.png)
 
 Example of 175B parameters model performing better with few shot learning
 
-![alt text](image-42.png)
+![alt text](/BERT/image-42.png)
 
 SAT Analogies
 
-![alt text](image-43.png)
+![alt text](/BERT/image-43.png)
 
 News text generation
 
 As impressive GPT 3's performance are it also highlighted the need for being mindful for **Bias and Fairness**.
 
-![alt text](image-44.png)
+![alt text](/BERT/image-44.png)
 
 Example of Bias in GPT 3
 
@@ -417,7 +417,7 @@ Example of Bias in GPT 3
 
 Now GPT 3 was nice and all but it was still not good enough. Before Open AI would release models that developers and data scientists who knew how to work with it would get interested with new releases. Now that GPT 3 had demonstrated conversational ability Open AI was preparing for getting bigger audience but before they could do that they wanted to make sure the vices of social media interactions could be controlled (Microsoft had already had a episode of releasing a bot on twitter and within one day the bot due to the learning it had got from the interactions from public started generating offensive responses and had to be taken down in a day) and the model be made more responsive to human input. One big leap in performance was due to Reinforcement Learning with human feedback. Open AI took the incremental gain that they got using Beta Users, added a conversational interface similar to popular chatting interfaces and made it available to the world Circa 2022 November - ChatGPT.
 
-![Exam Performance](image-31.png)
+![Exam Performance](/BERT/image-31.png)
 
 Studies performed on understanding the robustness of 3.5 with prior models were published by [chinese research group](https://arxiv.org/pdf/2303.00293) in 2023 exploring the different attributes that go into generating responses and the quality of response. This one [paper](https://arxiv.org/pdf/2303.10420) in particular compares 3.5 with 3 and presents its findings 
 
@@ -442,7 +442,7 @@ One other innovation that got bundled up was Multimodal capacity which allows GP
 
 Open AI has made available [Tokenizer viz](https://platform.openai.com/tokenizer) on its website that allows us to see the breaking up of words into Tokens
 
-![alt text](image-34.png)
+![alt text](/BERT/image-34.png)
 
 [Interactive GPT Example](https://poloclub.github.io/transformer-explainer/)
 
@@ -462,23 +462,23 @@ Models like ChatGPT 3.5 and 4 are evaluated for problems like
 6. US Medical License tests
 7. Visual reasoning
 
-![alt text](image-33.png)
+![alt text](/BERT/image-33.png)
 
 Overview of Performance and insturction drift
 
-![alt text](image-47.png)
+![alt text](/BERT//BERT/image-47.png)
 
 Math Example
 
-![Answering Controversies](image-48.png)
+![Answering Controversies](/BERT/image-48.png)
 
 Answering Controversial Questions
 
-![Code Adherence](image-49.png)
+![Code Adherence](/BERT/image-49.png)
 
 Executable code response reduced from 52% to 10%
 
-![alt text](image-51.png)
+![alt text](/BERT/image-51.png)
 
 GPT 4 has reduced instruction following capacity
 
@@ -487,15 +487,15 @@ GPT 4 has reduced instruction following capacity
 
 ## Comparable Models
 
-![Existing Large Language Models](image-1.png)
+![Existing Large Language Models](/BERT/image-1.png)
 Timeline of LLMs. [6]
 
 Above image is a zoomed out version of the timelines where publicly available LLMs were released. We observe the word soup of LLMs that are released from 2020 till 23 and the competitive landscape with many companies released thier own versions and making them available to the public. 
 
-![Increase in the number of Parameters](image-5.png)
+![Increase in the number of Parameters](/BERT/image-5.png)
 Increase in the number of Parameters. [15]
 
-![extending Pre Trained LLMs](image-6.png)
+![extending Pre Trained LLMs](/BERT/image-6.png)
 extending Pre Trained LLMs
 
 # References
