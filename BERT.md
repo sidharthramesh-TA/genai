@@ -247,7 +247,6 @@ For NER example we have `Joe Biden went to New York` and BERT is able to identif
 
 For Span prediction the input question is `who discovered America` and the answer is identified as `Columbus` 
 
-[Tiger Q&A Example](https://colab.research.google.com/drive/1GeWp-YmNha3ORYeyehR9UGLGYtYc14sM?usp=sharing)
 
 
 ### Many BERTs
@@ -447,7 +446,7 @@ Open AI has made available [Tokenizer viz](https://platform.openai.com/tokenizer
 
 [Interactive GPT Example](https://poloclub.github.io/transformer-explainer/)
 
-[Tiger GPT example](https://colab.research.google.com/drive/14583--jQ7CMAdzFiU9a_reC_wPaSz2bQ#scrollTo=UbktPYu6uHnG)
+
 
 ## Changing Nature of ChatGPT
 
